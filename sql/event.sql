@@ -7,7 +7,7 @@ create table event(
   event_name varchar,
   gov_unit varchar,
   event_type varchar,
-  status varchar,
+  event_status varchar,
   lat real,
   lng real,
   alt real,
