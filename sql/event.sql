@@ -8,11 +8,15 @@ create table event(
   gov_unit varchar,
   event_type varchar,
   event_status varchar,
+  event_source varchar,
+  event_provider varchar,
+  position_desc varchar,
   lat real,
   lng real,
   alt real,
   address varchar,
   description varchar,
-  primary key (event_id,data_dt)
+  etl_dt timestamp,
+  primary key (event_id)
 );
 
