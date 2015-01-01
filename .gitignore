@@ -1,3 +1,6 @@
 link.info
 *.pyc
 test.php
+
+#temporay data
+data.dat

@@ -9,7 +9,7 @@ create table event(
   predict_time timestamp with time zone,
   name varchar,
   type varchar,
-  status varchar,
+  status integer,
   source varchar,
   provider varchar,
   position_desc varchar,
@@ -18,6 +18,7 @@ create table event(
   alt real,
   address varchar,
   description varchar,
+  link varchar,
   primary key (event_id)
 );
 
