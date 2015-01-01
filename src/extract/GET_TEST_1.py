@@ -136,8 +136,8 @@ class GET_TEST(EVENT_STATUS):
     if len(close_ids)>0:
       sql = "UPDATE event SET status=%d where event_id in (%s)"%(self.STOP,",".join(map(str,close_ids)))
       self.db.execute(sql)
-      for i in close_ids:
-        self.addLog(close_ids[i],self.STOP)
+      for id in close_ids:
+        self.addLog(id,self.STOP)
 
   def getDATA(self):
 
@@ -178,7 +178,7 @@ class GET_TEST(EVENT_STATUS):
 
 
   def getEventId(self,event_source,start_dt,description):
-    sql ="SELECT event_id from event where start_dt='%s' and description = '%s' and source='%s' "%(start_dt,description,event_source)
+    sql ="SELECT event_id from event where start_dt='%s' and description = '%s' and source='%s' and status=%d "%(start_dt,description,event_source,self.RUNNING)
     result = self.db.select(sql)
     if len(result)>0:
       data_num  = result[0][0]
