@@ -4,3 +4,7 @@ test.php
 
 #temporay data
 data.dat
+
+
+#ignore www folder
+www/*
