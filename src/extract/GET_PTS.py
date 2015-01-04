@@ -70,7 +70,7 @@ class GET_PTS(EVENT_STATUS):
     col = ",".join(map(str,[i[0] for i in sql_string]))
     values = ",".join(map(str,[i[1] for i in sql_string]))
     sql  = "INSERT INTO event_log (%s) VALUES (%s)"%(col,values)
-    print sql
+    #print sql
     self.db.execute(sql)
 
   def createEvent(self,data):
@@ -88,7 +88,7 @@ class GET_PTS(EVENT_STATUS):
     col = ",".join(map(str,[i[0] for i in sql_string]))
     values = ",".join(map(str,[i[1] for i in sql_string]))
     sql = "INSERT INTO event (%s) VALUES (%s)"%(col,values)
-    print sql
+    #print sql
     self.db.execute(sql)
     #補上log
     id = self.getEventId(data)
@@ -122,13 +122,11 @@ address
     sql_string.append("start_dt='%s'"%data['start_dt'])
     if data['status']==EVENT_STATUS.STOP:
       sql_string.append("end_dt=now()")
-    sql_string.append("udpate_dt=now()")
+    sql_string.append("update_dt=now()")
     sql_string.append("type='%s'"%data['type'])
     sql_string.append("status=%d"%data['status'])
-
-
     content = ",".join(sql_string)
-    sql = "UPDATE event SET %s WHERE event_id=%d"%data['event_id']
+    sql = "UPDATE event SET %s WHERE event_id=%d"%(content,data['event_id'])
     self.db.execute(sql)
     #補上log
     self.appendLog(data)
@@ -163,7 +161,8 @@ address
     if len(tds[4].xpath('./div/text()'))>0:
       data['start_dt'] = tds[4].xpath('./div/text()')[0]+' '+tds[5].xpath('./div/text()')[0]
     else:
-      data['start_dt'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+      #因為沒有數字  亂填
+      data['start_dt'] = '1970-01-01 0:0:0'
 
     return data
 
@@ -179,7 +178,7 @@ address
     if len(close_ids)>0:
       values= ",".join(map(str,close_ids))
       sql = "UPDATE event SET status=%d where event_id in (%s)"%(self.STOP,values)
-      print sql
+      #print sql
       self.db.execute(sql)
 
       #系統更新到資料裡
@@ -217,10 +216,11 @@ address
 
       #Process on each row
       data.update(self.extractData(rows[i].xpath('.//td')))
-      print data
+      #print data
       data['event_id'] = self.getEventId(data)
       if data['event_id'] > 0 :
-        self.udpateEvent(data)
+        self.updateEvent(data)
+        id_list.append(data['event_id'])
       else:
         del data['event_id']
         #找不到id  就新增
@@ -259,7 +259,7 @@ if __name__ == '__main__':
       os.system('psql -d godzilla_alert_b -f '+os.path.dirname(__file__)+'/../../sql/event.sql')
       os.system('psql -d godzilla_alert_b -f '+os.path.dirname(__file__)+'/../../sql/event_log.sql')
 
-  print os.path.dirname(__file__)+'/../../link.info'
+  #print os.path.dirname(__file__)+'/../../link.info'
   ahaDB = GET_PTS(os.path.dirname(__file__)+'/../../link.info')
   ahaDB.getDATA()
   ahaDB.close()

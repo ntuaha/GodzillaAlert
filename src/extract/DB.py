@@ -47,12 +47,12 @@ class DB:
     self.conn.close()
 
   def execute(self,sql):
-    print sql
+    #print sql
     self.cur.execute(sql)
     self.conn.commit()
 
   def select(self,sql):
-    print sql
+    #print sql
     self.cur.execute(sql)
     result = self.cur.fetchall()
     return result
