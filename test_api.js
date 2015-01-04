@@ -23,7 +23,8 @@ var server = http.createServer(function(req, res) {
       return true;
     };
 
-    // record the visit
+    // query for active events
+    //client.query('SELECT * FROM event WHERE status = 1 AND type = ($1)', function(err, result) {
     client.query('SELECT * FROM event WHERE status = 1', function(err, result) {
 
       // handle an error from the query
@@ -32,7 +33,7 @@ var server = http.createServer(function(req, res) {
       // return the client to the connection pool for other requests to reuse
       done();
       res.writeHead(200, {'content-type': 'text/plain'}); 
-      res.end('test\n ' + result.rowCount + ' rows were received\n' + JSON.stringify(result));
+      res.end('Currently there are ' + result.rowCount + ' active events happening.\n\n' + JSON.stringify(result));
     });
   });
 })
