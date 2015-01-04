@@ -7,10 +7,6 @@ import re
 #處理掉unicode 和 str 在ascii上的問題
 import sys
 import os
-import datetime
-import cookielib, urllib2,urllib
-from lxml import html,etree
-import StringIO
 
 #自己的library
 from DB import *
@@ -26,9 +22,9 @@ class EVENT_STATUS:
   WATCHING = 2
 
 
-class GET_PTS(EVENT_STATUS):
-  SOURCE = '警察廣播電台'
-  LINK = 'http://rtr.pbs.gov.tw/realtime/RoadAll.php'
+class GET(EVENT_STATUS):
+  SOURCE = None
+  LINK = None
   TEAM = 'SAW'
 
   def __init__(self,filepath):
@@ -62,6 +58,13 @@ class GET_PTS(EVENT_STATUS):
     sql_string.append(['status',"%d"%data['status']])
     if 'address' in data:
       sql_string.append(['address',"'%s'"%data['address']])
+    if 'lat' in data:
+      sql_string.append(['lat',"%f"%data['lat']])
+    if 'lng' in data:
+      sql_string.append(['lng',"%f"%data['lng']])
+    if 'alt' in data:
+      sql_string.append(['alt',"%f"%data['alt']])
+
     sql_string.append(['description',"'%s'"%data['description']])
     sql_string.append(['provider',"'%s'"%data['provider']])
     sql_string.append(['source',"'%s'"%self.SOURCE])
@@ -81,10 +84,17 @@ class GET_PTS(EVENT_STATUS):
     sql_string.append(["description","'%s'"%data['description']])
     if data['status']==EVENT_STATUS.STOP:
       sql_string.append("end_dt=now()")
+    if 'lat' in data:
+      sql_string.append(["lat","%f"%data['lat']])
+    if 'lng' in data:
+      sql_string.append(["lng","%f"%data['lng']])
+    if 'alt' in data:
+      sql_string.append(["alt","%f"%data['alt']])
+
     sql_string.append(["type","'%s'"%data['type']])
     sql_string.append(["status","%d"%data['status']])
     if 'address' in data:
-      sql_string.append(["address","'%d'"%data['address']])
+      sql_string.append(["address","'%s'"%data['address']])
     col = ",".join(map(str,[i[0] for i in sql_string]))
     values = ",".join(map(str,[i[1] for i in sql_string]))
     sql = "INSERT INTO event (%s) VALUES (%s)"%(col,values)
@@ -122,6 +132,12 @@ address
     sql_string.append("start_dt='%s'"%data['start_dt'])
     if data['status']==EVENT_STATUS.STOP:
       sql_string.append("end_dt=now()")
+    if 'lat' in data:
+      sql_string.append(["lat","%f"%data['lat']])
+    if 'lng' in data:
+      sql_string.append(["lng","%f"%data['lng']])
+    if 'alt' in data:
+      sql_string.append(["alt","%f"%data['alt']])
     sql_string.append("update_dt=now()")
     sql_string.append("type='%s'"%data['type'])
     sql_string.append("status=%d"%data['status'])
@@ -133,113 +149,28 @@ address
 
 
 
-
-  def extractData(self,tds):
-
-    #no of row, but its useless
-    data = {}
-    no = tds[0]
-    #event type: 道路施工
-    data['type'] = self.SOURCE+"_"+tds[1].text.strip()
-    #熱心聽眾
-    data['provider'] = tds[6].text.strip()
-    if data['provider'] == None:
-      data['provider'] = ""
-    #地點
-    data['title'] = " ".join(tds[2].xpath('.//text()')).replace("\n","").replace("\t","")
-    #路況說明
-    data['description'] = tds[3].text.strip()
-    #路況說明: 持續, 排除, 後續
-    event_status = self.RUNNING
-    for status in tds[3].xpath('./font/text()'):
-      if status.strip() =="排除":
-        event_status = self.STOP
-        break
-    data['status'] = event_status
-
-    #事件起始時間
-    if len(tds[4].xpath('./div/text()'))>0:
-      data['start_dt'] = tds[4].xpath('./div/text()')[0]+' '+tds[5].xpath('./div/text()')[0]
-    else:
-      #因為沒有數字  亂填
-      data['start_dt'] = '1970-01-01 0:0:0'
-
-    return data
+  def run(self):
+    data = self.getData()
+    for d in data:
+      id = self.getEventId(d)
+      if id>0:
+        self.updateEvent(d)
+      elif id==0:
+        self.createEvent(d)
+    self.close()
 
 
-  #強迫事件結束
-  def forceCloseEvent(self,id_list):
-    print id_list
-    ids = ",".join(map(str,id_list))
-    sql = "SELECT event_id FROM event WHERE event_id not in (%s) and status=%d and type like '%s%%' "%(ids,self.RUNNING,self.SOURCE)
-    result = self.db.select(sql)
-    close_ids = [r[0] for r in result]
-    print close_ids
-    if len(close_ids)>0:
-      values= ",".join(map(str,close_ids))
-      sql = "UPDATE event SET status=%d where event_id in (%s)"%(self.STOP,values)
-      #print sql
-      self.db.execute(sql)
+  def getData(self):
+    raise '得到data'
 
-      #系統更新到資料裡
-      sql = "SELECT event_id,update_dt,type,status,description from event WHERE event_id in (%s)"%values
-      result = self.db.select(sql)
-      for r in result:
-        data = {}
-        data['event_id'] = r[0]
-        data['update_dt'] = r[1]
-        data['type'] = r[2]
-        data['status'] = r[3]
-        data['description'] = r[4]
-        data['source'] = self.SOURCE
-        data['provider'] = self.TEAM
-        data['status'] = self.STOP
-
-        self.appendLog(data)
+  def getIdString(self,datum):
+    raise '如何得到資料識別'
 
 
-  def getDATA(self):
-
-    #download data from 警廣
-    f = os.path.dirname(__file__)+'/data.dat'
-    os.system('wget http://rtr.pbs.gov.tw/realtime/RoadAll.php -O %s'%f)
-    root = etree.parse(f,etree.HTMLParser())
-    rows = root.xpath('//*[@id="myTable"]/tbody/tr')
-    length = len(rows)
-
-    # data source
-    id_list = []
-    for i in range(length):
-      data = {}
-      data['source'] = self.SOURCE
-      data['link'] = self.LINK
-
-      #Process on each row
-      data.update(self.extractData(rows[i].xpath('.//td')))
-      #print data
-      data['event_id'] = self.getEventId(data)
-      if data['event_id'] > 0 :
-        self.updateEvent(data)
-        id_list.append(data['event_id'])
-      else:
-        del data['event_id']
-        #找不到id  就新增
-        id = self.createEvent(data)
-        id_list.append(id)
-    #清掉其他沒被更新，但目前還在進行中的事件
-
-    self.forceCloseEvent(id_list)
-    #結束這個檔案的處理
-    os.system('rm %s'%f)
-
-
-
-
-  def getEventId(self,data):
+  def getEventId(self,datum):
     try:
-      start_dt = data['start_dt']
-      description = data['description']
-      sql ="SELECT event_id from event where start_dt='%s' and description = '%s' and status=%d "%(start_dt,description,self.RUNNING)
+      where = " AND ".join(self.getIdString(datum))
+      sql ="SELECT event_id from event where %s "%where
       result = self.db.select(sql)
       if len(result)>0:
         data_num  = result[0][0]
@@ -248,7 +179,8 @@ address
       return data_num
     except Exception as e:
       print e
-      print data
+      print datum
+
 
 
 
