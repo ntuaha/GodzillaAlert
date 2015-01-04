@@ -80,7 +80,13 @@ class GET(EVENT_STATUS):
     sql_string = []
     sql_string.append(["title","'%s'"%data['title']])
     sql_string.append(["start_dt","'%s'"%data['start_dt']])
-    sql_string.append(["update_dt","now()"])
+    if 'update_dt' in data:
+      sql_string.append(["update_dt","'%s'"%data['update_dt']])
+    else:
+      sql_string.append(["update_dt","now()"])
+    if 'predict_dt' in data:
+      sql_string.append(["predict_dt","'%s'"%data['predict_dt']])
+
     sql_string.append(["description","'%s'"%data['description']])
     if data['status']==EVENT_STATUS.STOP:
       sql_string.append("end_dt=now()")
@@ -133,12 +139,18 @@ address
     if data['status']==EVENT_STATUS.STOP:
       sql_string.append("end_dt=now()")
     if 'lat' in data:
-      sql_string.append(["lat","%f"%data['lat']])
+      sql_string.append(["lat=%f"%data['lat']])
     if 'lng' in data:
-      sql_string.append(["lng","%f"%data['lng']])
+      sql_string.append(["lng=%f"%data['lng']])
     if 'alt' in data:
-      sql_string.append(["alt","%f"%data['alt']])
-    sql_string.append("update_dt=now()")
+      sql_string.append(["alt=%f"%data['alt']])
+    if 'update_dt' in data:
+      sql_string.append("update_dt='%s'"%data['update_dt'])
+    else:
+      sql_string.append("update_dt=now()")
+    if 'description' in data:
+      sql_string.append("description='%s'"%data['description'])
+
     sql_string.append("type='%s'"%data['type'])
     sql_string.append("status=%d"%data['status'])
     content = ",".join(sql_string)
@@ -154,9 +166,11 @@ address
     for d in data:
       id = self.getEventId(d)
       if id>0:
+        d['event_id'] = id
         self.updateEvent(d)
       elif id==0:
         self.createEvent(d)
+        print "create"
     self.close()
 
 
@@ -186,15 +200,7 @@ address
 
 
 if __name__ == '__main__':
-  if len(sys.argv)>1:
-    if sys.argv[1] == 't':
-      os.system('psql -d godzilla_alert_b -f '+os.path.dirname(__file__)+'/../../sql/event.sql')
-      os.system('psql -d godzilla_alert_b -f '+os.path.dirname(__file__)+'/../../sql/event_log.sql')
-
-  #print os.path.dirname(__file__)+'/../../link.info'
-  ahaDB = GET_PTS(os.path.dirname(__file__)+'/../../link.info')
-  ahaDB.getDATA()
-  ahaDB.close()
+  pass
 
 
 
