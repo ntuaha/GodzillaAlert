@@ -6,7 +6,7 @@
     $scope.events = [];
     $scope.s = null;
     $scope.draw = function(){
-      $http.get('./api/getImpEvent.php?beta=T&limit=3').
+      $http.get('./api/getImpEvent.php?beta=T&limit=4').
       success(function(data, status, headers, config) {
         $scope.events = data["data"];
       }).

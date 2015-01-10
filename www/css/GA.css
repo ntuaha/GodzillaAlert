@@ -10,6 +10,12 @@
   height:400px;
 }
 
+.event img{
+  width:100px;
+  margin-left:30%;
+}
+
+
 .description{
    font-size:18px;
 }
@@ -21,7 +27,7 @@
 
 .personal-img{
   height:150px;
-  margin-left:50px;
+  margin-left:30%;
 }
 
 .animate-repeat {
