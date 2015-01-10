@@ -2,6 +2,14 @@
   font-family: "Consolas","黑體-繁","微軟正黑體";
 
 }
+
+
+.button-bottom{
+  position:absolute;
+  bottom:10px;
+}
+
+
 .top{
   margin-top:70px;
 }

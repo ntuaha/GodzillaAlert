@@ -36,7 +36,17 @@
     <div class="container col-md-10 col-md-offset-1" >
       <!-- Begin of Introduction -->
       <div class="row top page-header">
+        <div class="col-lg-6">
         <h1> Godzilla Alert <small>你最需要的災難資訊!</small></h1>
+        </div>
+        <div class="col-lg-6">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...還在開發中...給使用者輸入地點" disabled>
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">Go!</button>
+            </span>
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
       </div>
       <div class="row" ng-controller="impCtrl">
         <div class="alert alert-success" role="alert">目前最新資料時間: {{events[0].start_dt}}</div>
@@ -49,6 +59,10 @@
               <p>類型:{{e.type}}</p>
               <p>時間:{{e.update_dt}}</p>
               <div class="well">{{e.description}}</div>
+            </div>
+            <div class="button-bottom">
+              <a href="#" class="btn btn-primary" role="button">Comment</a>
+              <a href="#" class="btn btn-default" role="button">See more</a>
             </div>
           </div>
         </div>
