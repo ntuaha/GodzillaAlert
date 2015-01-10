@@ -135,40 +135,85 @@
         <h1>API 展示<hr/></h1>
 
           <div class="col-sm-12 col-md-12">
+
+            <!-- Left -->
             <div class="col-md-6">
+              
               <div class="panel panel-default">
-              <div class="panel-heading"><h3 class="panel-title">當前所有資料概況</h3></div>
+              <div class="panel-heading"><h3 class="panel-title">當前所有事件概況</h3></div>
               <div class="panel-body">
-                <p>可以了解當前資料庫內所有資料的持續狀態與更新情形。</p>
+                <p>可以了解當前資料庫內所有事件的持續狀態與更新情形。</p>
                 <div class="well">
-                  <a href='http://104.46.234.139/GA/api/getDataInfo.php?beta=T'>http://104.46.234.139/GA/api/getDataInfo.php?beta=T</a>
+                  GET | <a href='http://104.46.234.139/GA/api/getDataInfo.php?beta=T'>http://104.46.234.139/GA/api/getDataInfo.php?beta=T</a>
                 </div>
+                <br>
+                <p>參數：</p>
+                <div class="well">
+                  GET beta=T 開發中版本
+                </div>
+                <br>
+                <p>資料內容：</p>
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>標題</th>
+                      <th>描述</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row"></th>
+                      <td>type</td>
+                      <td>事件類型</td>
+                    </tr>
+                    <tr>
+                      <th scope="row"></th>
+                      <td>status</td>
+                      <td>事件狀況</td>
+                    </tr>
+                    <tr>
+                      <th scope="row"></th>
+                      <td>cnt</td>
+                      <td>事件數量</td>
+                    </tr>
+                    <tr>
+                      <th scope="row"></th>
+                      <td>update_dt</td>
+                      <td>更新時間</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
               </div>
             </div>
+
+            <!-- Right -->
             <div class="col-md-6">
 
               <p>資料範例：</p>
               <div class="well">
                 <pre><code>
-[
-  {
-    "type":"警察廣播電台_災變",
-    "status":"持續中",
-    "cnt":"97",
-    "update_dt":"2015-01-10 04:30:04"
-  },
-  {
-    "type":"警察廣播電台_災變",
-    "status":"結束",
-    "cnt":"4",
-    "update_dt":"2015-01-04 01:08:05"
-  }
-]
+{
+  "data":[
+    {
+      "type":"警察廣播電台_災變",
+      "status":"持續中",
+      "cnt":"97",
+      "update_dt":"2015-01-10 04:30:04"
+    },
+    {
+      "type":"警察廣播電台_災變",
+      "status":"結束",
+      "cnt":"4",
+      "update_dt":"2015-01-04 01:08:05"
+    }
+  ]
+}
                 </code></pre>
               </div>
             </div>
 
+            <!-- Left -->
             <div class="col-md-6">
 
               <div class="panel panel-default">
@@ -176,31 +221,185 @@
                 <div class="panel-body">
                  <p>可以取得當前發生所有事件的詳細情況與內容。</p>
                   <div class="well">
-                    <a href='http://104.46.234.139/GA/api/getEvent.php?beta=T'>http://104.46.234.139/GA/api/getEvent.php?beta=T</a>
+                    GET | <a href='http://104.46.234.139/GA/api/getEvent.php?beta=T'>http://104.46.234.139/GA/api/getEvent.php?beta=T</a>
                   </div>
+                  <br>
+                  <p>參數：</p>
+                  <div class="well">
+                    GET beta=T 開發中版本
+                  </div>
+                  <br>
+                  <p>資料內容：</p>
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>標題</th>
+                        <th>描述</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row"></th>
+                        <td>status</td>
+                        <td>事件狀況</td>
+                      </tr>
+                      <tr>
+                        <th scope="row"></th>
+                        <td>title</td>
+                        <td>事件標題</td>
+                      </tr>
+                      <tr>
+                        <th scope="row"></th>
+                        <td>description</td>
+                        <td>事件描述</td>
+                      </tr>
+                      <tr>
+                        <th scope="row"></th>
+                        <td>update_dt</td>
+                        <td>更新時間</td>
+                      </tr>
+                      <tr>
+                        <th scope="row"></th>
+                        <td>start_dt</td>
+                        <td>起始時間</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
+
+            <!-- Right -->
             <div class="col-md-6">
               <p>資料範例：</p>
               <div class="well">
                 <pre><code>
-[
-  {
-    "status":"觀察中",
-    "title":"臺中市和平區-烏石坑-C1F9H",
-    "description":"{"d": "-", "10m": "-", "6h": "-", "no": "C1F9H", "24h": "-", "2d": "-", "12h": "-", "3h": "-", "1d": "-", "1h": "-"}",
-    "update_dt":"2015-01-10 17:20:00",
-    "start_dt":"2015-01-01 00:00:00"
-  },
-  {
-    "status":"觀察中",
-    "title":"花蓮縣壽豐鄉-鯉魚潭-C0T87",
-    "description":"{"d": "-", "10m": "-", "6h": "-", "no": "C0T87", "24h": "-", "2d": "1.5", "12h": "-", "3h": "-", "1d": "-", "1h": "-"}",
-    "update_dt":"2015-01-10 17:20:00",
-    "start_dt":"2015-01-01 00:00:00"
-  }
-]
+{
+  "data":[
+    {
+      "status":"觀察中",
+      "title":"臺中市和平區-烏石坑-C1F9H",
+      "description":"{"d": "-", "10m": "-", "6h": "-", "no": "C1F9H", "24h": "-", "2d": "-", "12h": "-", "3h": "-", "1d": "-", "1h": "-"}",
+      "update_dt":"2015-01-10 17:20:00",
+      "start_dt":"2015-01-01 00:00:00"
+    },
+    {
+      "status":"觀察中",
+      "title":"花蓮縣壽豐鄉-鯉魚潭-C0T87",
+      "description":"{"d": "-", "10m": "-", "6h": "-", "no": "C0T87", "24h": "-", "2d": "1.5", "12h": "-",  "3h": "-", "1d": "-", "1h": "-"}",
+      "update_dt":"2015-01-10 17:20:00",
+      "start_dt":"2015-01-01 00:00:00"
+    }
+  ]
+}
+                </code></pre>
+              </div>
+            </div>
+
+            <!-- Left -->
+            <div class="col-md-6">
+              
+              <div class="panel panel-default">
+              <div class="panel-heading"><h3 class="panel-title">當前限定數量事件</h3></div>
+              <div class="panel-body">
+                <p>可以取得當前資料庫內限定數量（最重要 N 個）事件的持續狀態與更新情形。</p>
+                <div class="well">
+                  GET | <a href='http://104.46.234.139/GA/api/getImpEvent.php?beta=T&limit=2'>http://104.46.234.139/GA/api/getImpEvent.php?beta=T&limit=2</a>
+                </div>
+                <br>
+                <p>參數：</p>
+                <div class="well">
+                  GET beta=T 開發中版本
+                  GET limit=[N] 限定事件數量
+                </div>
+                <br>
+                <p>資料內容：</p>
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>標題</th>
+                      <th>描述</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row"></th>
+                      <td>type</td>
+                      <td>事件類型</td>
+                    </tr>
+                    <tr>
+                      <th scope="row"></th>
+                      <td>status</td>
+                      <td>事件狀況</td>
+                    </tr>
+                    <tr>
+                      <th scope="row"></th>
+                      <td>title</td>
+                      <td>事件標題</td>
+                    </tr>
+                    <tr>
+                      <th scope="row"></th>
+                      <td>description</td>
+                      <td>事件描述</td>
+                    </tr>
+                    <tr>
+                      <th scope="row"></th>
+                      <td>update_dt</td>
+                      <td>更新時間</td>
+                    </tr>
+                    <tr>
+                      <th scope="row"></th>
+                      <td>start_dt</td>                        
+                      <td>起始時間</td>
+                    </tr>
+                    <tr>
+                      <th scope="row"></th>
+                      <td>s</td>                        
+                      <td>資料來源</td>
+                    </tr>
+                    <tr>
+                      <th scope="row"></th>
+                      <td>sources</td>                        
+                      <td>來源列表</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              </div>
+            </div>
+
+            <!-- Right -->
+            <div class="col-md-6">
+
+              <p>資料範例：</p>
+              <div class="well">
+                <pre><code>
+{
+  "data":[
+    {
+      "type":"警察廣播電台_其他",
+      "status":"持續中",
+      "title":" 南部 [中山高速公路] 南下 ",
+      "description":"王田路段.客運任意變換車道+貼近前車.請小心",
+      "update_dt":"2015-01-10 23:10:04",
+      "start_dt":"2015-01-10 22:05:00",            
+      "s":"警察廣播電台"
+    },
+    {
+      "type":"警察廣播電台_事故",
+      "status":"持續中",
+      "title":" 北部 [臺北市] 忠孝橋(往三重方向)",
+      "description":"機車道有事故.救護車已達處理.因佔用外側影響車流.回堵至重慶南路",
+      "update_dt":"2015-01-10 23:10:04",
+      "start_dt":"2015-01-10 22:08:00",
+      "s":"警察廣播電台"
+    }
+  ],
+  "sources":[
+    "警察廣播電台",
+    "中央氣象局"
+  ]
+}
                 </code></pre>
               </div>
             </div>
@@ -219,9 +418,9 @@
               </a>
               <div class="caption">
                 <h3>孫玉峰(Summit)<hr/></h3>
-                <p>Etu Taiwan Sr. Data Analysis Engineer</p>
+                <p>Etu Taiwan | Sr. Data Analysis Engineer</p>
                 <p class="description">
-                對科學的興趣加上就讀數學系的訓練，使他熱衷於以數學方法建立模型，連結科學研究與生活大小事。利用數學建模與統計分析進行過生態系統、生物代謝網路以及腦神經科學的研究；近來專注於使用資料科學處理電子商務、運動數據(Sabermetrics)以及新聞語意分析(g0v新聞)的專案。
+                對科學的興趣加上就讀數學系的訓練，使他熱衷於以數學方法建立模型，連結科學研究與生活大小事。利用數學建模與統計分析進行過生態系統、生物代謝網路以及腦神經科學的研究；近來專注於使用資料科學處理電子商務、運動數據(Sabermetrics)以及新聞語意分析(g0v全民除黴計畫APP:新聞啄木鳥)的專案。
                 </p>
               </div>
 
