@@ -88,7 +88,8 @@
         <h1>API 說明文件<hr/></h1>
           <div class="col-sm-4 col-md-4">
             <li>當前所有資料概況</li>
-            <li>取得當前發生事件</li>
+            <li>當前所有發生事件</li>
+            <li>當前限定數量事件</li>
           </div>
           <div class="col-sm-8 col-md-8">
             <div class="panel panel-default">
@@ -96,14 +97,48 @@
             <div class="panel-body">
               <p>可以了解當前資料庫內所有資料的持續狀態與更新情形。</p>
               <div class="well">
-                <a href='http://104.46.234.139/GA/api/getDataInfo.php?beta=T'>http://104.46.234.139/GA/api/getDataInfo.php?beta=T</a>
+                GET | <a href='http://104.46.234.139/GA/api/getDataInfo.php?beta=T'>http://104.46.234.139/GA/api/getDataInfo.php?beta=T</a>
               </div>
               <br>
+              <p>參數：GET <pre><code>beta=T</code></pre> 開發中版本</p>
+              <br>
+              <p>資料內容：</p>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>標題</th>
+                    <th>描述</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row"></th>
+                    <td>type</td>
+                    <td>事件類型</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"></th>
+                    <td>status</td>
+                    <td>事件狀況</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"></th>
+                    <td>cnt</td>
+                    <td>事件數量</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"></th>
+                    <td>update_dt</td>
+                    <td>更新時間</td>
+                  </tr>
+                </tbody>
+              </table>
               <br>
               <p>資料範例：</p>
               <div class="well">
-                <pre><code>
-                [
+              <pre><code>
+              {
+                "data":[
                   {
                     "type":"警察廣播電台_災變",
                     "status":"持續中",
@@ -141,7 +176,8 @@
                     "update_dt":"2015-01-10 17:00:36"
                   },
                 ]
-                </code></pre>
+              }
+              </code></pre>
               </div>
             </div>
             </div>
@@ -151,14 +187,21 @@
             <div class="panel-body">
               <p>可以取得當前發生所有事件的詳細情況與內容。</p>
               <div class="well">
-                <a href='http://104.46.234.139/GA/api/getEvent.php?beta=T'>http://104.46.234.139/GA/api/getEvent.php?beta=T</a>
+                GET | <a href='http://104.46.234.139/GA/api/getEvent.php?beta=T'>http://104.46.234.139/GA/api/getEvent.php?beta=T</a>
               </div>
               <br>
+              <p></p>
+              <br>
+              <p>資料</p>
+              <table class="table table-hover">
+                <thead></thead>
+              </table>
               <br>
               <p>資料範例：</p>
               <div class="well">
-                <pre><code>
-                [
+              <pre><code>
+              {
+                "data":[
                   {
                     "status":"觀察中",
                     "title":"臺中市和平區-烏石坑-C1F9H",
@@ -195,10 +238,14 @@
                     "start_dt":"1970-01-01 00:00:00"
                   },
                 ]
-                </code></pre>
+              }
+              </code></pre>
               </div>
             </div>
             </div>
+
+            http://104.46.234.139/GA/api/getImpEvent.php?beta=T&limit=2
+
           </div>
       </div>
       <!-- API 說明文件示範區 結束-->
