@@ -1,5 +1,34 @@
 (function(){
   var app = angular.module('GA',[]);
+
+  app.controller("impCtrl",['$scope','$http','$interval','$filter',function($scope,$http,$interval,$filter){
+    //Begin of impCtrl
+    $scope.events = [];
+    $scope.s = null;
+    $scope.draw = function(){
+      $http.get('./api/getImpEvent.php?beta=T&limit=3').
+      success(function(data, status, headers, config) {
+        $scope.events = data["data"];
+      }).
+      error(function(data, status, headers, config) {
+        console.log(data);
+        console.log(status);
+      });
+    };
+    $scope.draw();
+    //5 min refresh
+    $interval(function(){
+      $scope.draw();
+      console.log("udpate: "+Math.floor(Date.now() / 1000));
+    },300000);
+
+    //End of impCtrl
+  }]);
+
+
+
+
+
   app.controller("gaCtrl",['$scope','$http','$interval','$filter',function($scope,$http,$interval,$filter){
     $scope.items = [];
     $scope.heads = [];
