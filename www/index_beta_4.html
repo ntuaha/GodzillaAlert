@@ -12,25 +12,60 @@
     <title>Godzilla Alert</title>
   </head>
   <body>
+  <!-- nav -->
+  <nav class="navbar navbar-default fix col-md-12">
+
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Godzilla Alert</a>
+    </div>
+
+    </div><!-- /.navbar-collapse -->
+  </nav>
+  <!-- End of nav -->
+
+
+
+
+
     <div class="container col-md-10 col-md-offset-1" >
       <!-- Begin of Introduction -->
-      <div class="row">
+      <div class="row top">
         <h1> Godzilla Alert </h1>
-        <p>更快速知道離你最近的災難點!</p>
+        <p>知道你最需要的災難資訊!</p>
+      </div>
+      <div class="row">
+        <div class="col-sm-3 col-md-3">
+          <div class="thumbnail">
+            <div class="caption">
+              <h3>持續型資料</h3>
+              <p>這類型的資料就像是雨量，水位，風速等．這些資料一直可以讓我們監控，所以可以透過演算法找出，未來可能不正常的時間點．如果我們一查覺未來可能發生問題，那就提早發出警報，增加一般民眾的反應時間</p>
+            </div>
+            <img src="http://media-cache-ak0.pinimg.com/originals/d8/5a/21/d85a21afe9c40b61b51dc04741fa83aa.jpg" alt="持續型資料">
+          </div>
+        </div>
       </div>
       <!-- End of Introduction -->
+
+
+
       <!-- Begin of Project Concept -->
         <div class="row">
           <h1>專案緣起<hr/></h1>
           <p class="description">
           現在台灣有許多的災防平台，不過往往這些災防平台的資訊都一直要等到有人關注的時候，都才會又被拿出來提醒．我們認為這樣的狀況對於災防資訊的傳遞是非常不利的，畢竟很多災情通報都是需要“即時”瞭解與傳遞，才能爭取到最重要的逃難時間．因此我們希望讓這些資料透過加值的方式，使更多人願意把這些政府已經預估發生災難的訊息，放到他們隨手攜帶的裝置上，讓災防資訊更在任何時間，任何地點，都能快速，即時，一致的傳遞到每個人身上．</p>
           <p class="description">
-          為了達到上面的目標，我們將針對三個面向下手：</p>
+          為了達到上面的目標，我們將針對幾個面向下手：</p>
           <ul class="description">
-          <li>針對<strong>資料的統合，資料的分析運用</strong>，提供對使用者有意義的資訊與API，供每個開發者都能將這樣的資料“輕易”的放到各類平台上，達到資訊傳遞的目的</li>
-          <li>提供對使用者可以<strong>交流互動的平台</strong>，同時也將提供每個災難討論空間的API，好讓群眾可以更專注在針對每一個災難的前，中，後串連整個災難資源</li>
-          <li><strong>分析災難資訊</strong>，除了傳統的災防數據之外，相關的新聞，群眾的討論都可以透過Text mining的技術找出中間值得留意的資訊，可供政府或者是其他群眾面對災難的經驗傳承與預防．</li>
+          <li>彙整該事件之新聞，顯示分享或引用數</li>
+          <li>事件發生時顯示事件過去之歷史統計資訊</li>
+          <li>顯示過去相同路線及強度的颱風以及其造成之災害統計、類似強度的颱風是否停班停課</li>
+          <li>同地點過去是否發生類似事件</li>
+          <li>災害應變建議</li>
+          <li>物資需求廣播</li>
+          <li>災害發生原因統計歸納</li>
           </ul>
+
 
         </div>
       <!-- End of Project Goal -->
@@ -81,7 +116,6 @@
                 讓使用者能更快速瞭解災難資訊，以及協同描述災難狀況與傳遞資訊
                 </p>
               </div>
-
           </div>
           <!-- End of analysis -->
         </div>
@@ -101,7 +135,7 @@
                   <p>針對這些政府公開資料我們將採取三層架構處理．分別是資料擷取，資料分析，與資料呈現．在資料擷取，我們將採用MongoDB針對這些不同來源，不同類型的資料，先做初步的資料格式轉換，變成便利使用的JSON格式．第二階段在資料分析流程中，我們採用Python，協助我們抽離出這些資料核心的洞察資訊，並放入PostgreSQL做後續建立複雜的模型處理使用．最後在資料呈現這部分，我們透過NodeJS將我們的資料已API的形式傳遞給各類通路使用：Web, Mobile, Desktop AP 或者是其他民眾可以加值的應用平台之上．</p>
 
                 </div>
-                <img src="http://media-cache-ak0.pinimg.com/originals/8c/a7/4d/8ca74d2a31161e474bd0e8b77518df51.jpg" alt="資料處理流程">
+                <img src="http://media-cache-ec0.pinimg.com/originals/bc/e3/a6/bce3a61d413333913c41d433870c0c46.jpg" alt="資料處理流程">
 
               </div>
             </div>
@@ -212,7 +246,7 @@
           <!-- Wong -->
           <div class="col-sm-4 col-md-4">
               <a href="https://www.facebook.com/profile.php?id=100000442166585&fref=ts">
-              <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/p160x160/10730962_886361414721922_1374170209610432745_n.jpg?oh=2d9914c240059f78eb4bc9a73a3ef456&oe=552EEFB5&__gda__=1430280456_0624c4f18e703f33cd160268d66552c6" alt="Wong" class="img-circle personal-img" >
+              <img src="http://media-cache-ak0.pinimg.com/originals/ff/45/c9/ff45c9d555bc705cb6741af70a66eaea.jpg" alt="Wong" class="img-circle personal-img" >
               </a>
               <div class="caption">
                 <h3>翁克柔(Wong)<hr/></h3>

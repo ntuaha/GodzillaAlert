@@ -2,9 +2,17 @@
   font-family: "Consolas","黑體-繁","微軟正黑體";
 
 }
+.top{
+  margin-top:70px;
+}
 
 .description{
    font-size:18px;
+}
+
+.fix{
+  position: fixed;
+  z-index: 99;
 }
 
 .personal-img{
