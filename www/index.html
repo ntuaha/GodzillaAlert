@@ -37,18 +37,18 @@
       <!-- Begin of Introduction -->
       <div class="row top page-header">
         <h1> Godzilla Alert <small>你最需要的災難資訊!</small></h1>
-
       </div>
       <div class="row" ng-controller="impCtrl">
-
+        <div class="alert alert-success" role="alert">目前最新資料時間: {{events[0].start_dt}}</div>
         <div class="col-sm-3 col-md-3 " ng-repeat="e in events">
+
           <div class="thumbnail event">
             <img src="http://media-cache-ec0.pinimg.com/originals/6a/97/aa/6a97aaca218e0606730e1fa1e0acd55e.jpg" alt="階段型資料">
             <div class="caption">
-              <h3>{{e.title}}</h3>
+              <h4>{{e.title}}</h4>
               <p>類型:{{e.type}}</p>
               <p>時間:{{e.update_dt}}</p>
-              <p>{{e.description}}</p>
+              <div class="well">{{e.description}}</div>
             </div>
           </div>
         </div>
@@ -57,11 +57,12 @@
             <div class="caption">
               <img src="http://media-cache-ak0.pinimg.com/originals/af/1c/ba/af1cba1caf50dd8d34d692c3184e75ac.jpg" alt="沒事">
               <h3>太好了，沒事!</h3>
-              <p></p>
             </div>
           </div>
         </div>
+
       </div>
+
       <!-- End of Introduction -->
 
 
@@ -73,7 +74,7 @@
           <div class="col-sm-2 col-md-2 col-md-offset-1">
               <img src="./res/format.png" alt="一致" class=" personal-img">
               <div class="caption">
-                <h3>一致的資料格式與分類<hr/></h3>
+                <h3 class="text-center">一致資料格式<hr/></h3>
                 <p >
                 省下使用者到各地找尋災難訊息的時間，讓時間放在災難資訊加值服務上
                 </p>
@@ -85,7 +86,7 @@
           <div class="col-sm-2 col-md-2">
               <img src="./res/notice.png" alt="有感" class=" personal-img">
               <div class="caption">
-                <h3>有感的災難資料<hr/></h3>
+                <h3 class="text-center">有感災難資料<hr/></h3>
                 <p >
                 讓使用者能夠提供自己關心的地點與時間，可以更快速掌握災難的重點資訊．
                 </p>
@@ -94,9 +95,9 @@
           <!-- End of notice -->
           <!-- platform -->
           <div class="col-sm-2 col-md-2">
-              <img src="./res/talk.png" alt="平台" class="img-circle personal-img">
+              <img src="./res/talk.png" alt="平台" class="personal-img">
               <div class="caption">
-                <h3>資訊開放的公眾平台<hr/></h3>
+                <h3 class="text-center">開放資訊平台<hr/></h3>
                 <p >
                 讓資源提供者，資源需求者，資訊需求者，都能夠有一個共用的平台自由發布訊息與交流．
                 </p>
@@ -108,7 +109,7 @@
           <div class="col-sm-2 col-md-2">
               <img src="./res/statistics.png" alt="分析" class=" personal-img">
               <div class="caption">
-                <h3>災防資訊加值<hr/></h3>
+                <h3 class="text-center">加值災防資訊<hr/></h3>
                 <p >
                 讓使用者能更快速瞭解災難資訊，以及協同描述災難狀況與傳遞資訊
                 </p>
@@ -119,7 +120,7 @@
           <div class="col-sm-2 col-md-2">
               <img src="./res/money.png" alt="金流平台" class=" personal-img">
               <div class="caption">
-                <h3>災防金流物資平台<hr/></h3>
+                <h3>流通金流物資<hr/></h3>
                 <p >
                 讓每個人可以透過第三方支付等金流工具將金流投射到需要的地方上
                 </p>
