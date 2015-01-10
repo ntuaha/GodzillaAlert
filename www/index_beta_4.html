@@ -19,79 +19,15 @@
         <p>更快速知道離你最近的災難點!</p>
       </div>
       <!-- End of Introduction -->
-      <!-- Begin of Project Concept -->
+      <!-- Begin of Diaster -->
         <div class="row">
-          <h1>專案緣起<hr/></h1>
-          <p class="description">
-          現在台灣有許多的災防平台，不過往往這些災防平台的資訊都一直要等到有人關注的時候，都才會又被拿出來提醒．我們認為這樣的狀況對於災防資訊的傳遞是非常不利的，畢竟很多災情通報都是需要“即時”瞭解與傳遞，才能爭取到最重要的逃難時間．因此我們希望讓這些資料透過加值的方式，使更多人願意把這些政府已經預估發生災難的訊息，放到他們隨手攜帶的裝置上，讓災防資訊更在任何時間，任何地點，都能快速，即時，一致的傳遞到每個人身上．</p>
-          <p class="description">
-          為了達到上面的目標，我們將針對三個面向下手：</p>
-          <ul class="description">
-          <li>針對<strong>資料的統合，資料的分析運用</strong>，提供對使用者有意義的資訊與API，供每個開發者都能將這樣的資料“輕易”的放到各類平台上，達到資訊傳遞的目的</li>
-          <li>提供對使用者可以<strong>交流互動的平台</strong>，同時也將提供每個災難討論空間的API，好讓群眾可以更專注在針對每一個災難的前，中，後串連整個災難資源</li>
-          <li><strong>分析災難資訊</strong>，除了傳統的災防數據之外，相關的新聞，群眾的討論都可以透過Text mining的技術找出中間值得留意的資訊，可供政府或者是其他群眾面對災難的經驗傳承與預防．</li>
-          </ul>
-
+          <h2>災難位置</h2>
+          <p>災難位置</p>
         </div>
-      <!-- End of Project Goal -->
-      <!-- Begin of Project Goal -->
-        <div class="row">
-          <h1>專案目標<hr/></h1>
-          <!-- uniform -->
-          <div class="col-sm-3 col-md-3">
-              <img src="./res/format.png" alt="一致" class=" personal-img">
-              <div class="caption">
-                <h3>一致的資料格式與分類<hr/></h3>
-                <p >
-                省下使用者到各地找尋災難訊息的時間，讓時間放在災難資訊加值服務上
-                </p>
-              </div>
-
-          </div>
-          <!-- End of uniform -->
-          <!-- notice -->
-          <div class="col-sm-3 col-md-3">
-              <img src="./res/notice.png" alt="有感" class=" personal-img">
-              <div class="caption">
-                <h3>有感的災難資料<hr/></h3>
-                <p >
-                讓使用者能夠提供自己關心的地點與時間，可以更快速掌握災難的重點資訊．
-                </p>
-              </div>
-          </div>
-          <!-- End of notice -->
-          <!-- platform -->
-          <div class="col-sm-3 col-md-3">
-              <img src="./res/talk.png" alt="平台" class="img-circle personal-img">
-              <div class="caption">
-                <h3>資訊開放的公眾平台<hr/></h3>
-                <p >
-                讓資源提供者，資源需求者，資訊需求者，都能夠有一個共用的平台自由發布訊息與交流．
-                </p>
-              </div>
-
-          </div>
-          <!-- End of platform -->
-          <!-- analysis -->
-          <div class="col-sm-3 col-md-3">
-              <img src="./res/statistics.png" alt="分析" class=" personal-img">
-              <div class="caption">
-                <h3>災防資訊加值<hr/></h3>
-                <p >
-                讓使用者能更快速瞭解災難資訊，以及協同描述災難狀況與傳遞資訊
-                </p>
-              </div>
-
-          </div>
-          <!-- End of analysis -->
-        </div>
-      <!-- End of Project Goal -->
+      <!-- End of Diaster -->
       <!-- Begin of Data Process -->
         <div class="row">
           <h1>我們怎麼處理資料的？<hr/></h1>
-          <p class="description">
-          資料來自很多地方，格式不一致．雖然政府已經有開放出CAP這個共用災難格式，但是對於使用者想要快速瞭解還是需要一番努力，因此我們這裡提出對於災難資料的整理方法，資料的分類方式，以及資料處理方式．透過這樣的流程，將資料變成一致化的格式與使用方法，讓災防資訊的傳遞與串接能更快速完成．
-          </p>
           <!--  資料處理流程 -->
           <div class="row">
             <div class="col-sm-12 col-md-12">
@@ -149,30 +85,125 @@
       <!-- End of Data Process -->
       <!-- API 說明文件示範區 -->
       <div class="row">
-        <h1>API 文件<hr/></h1>
-        <div class="panel panel-default">
-            <div class="panel-heading"><h3 class="panel-title">資料庫目前所有資料概況</h3></div>
+        <h1>API 說明文件<hr/></h1>
+          <div class="col-sm-4 col-md-4">
+            <li>當前所有資料概況</li>
+            <li>取得當前發生事件</li>
+          </div>
+          <div class="col-sm-8 col-md-8">
+            <div class="panel panel-default">
+            <div class="panel-heading"><h3 class="panel-title">當前所有資料概況</h3></div>
             <div class="panel-body">
               <div class="well">
                 <a href='http://104.46.234.139/GA/api/getDataInfo.php?beta=T'>http://104.46.234.139/GA/api/getDataInfo.php?beta=T</a>
               </div>
               <p>
-              可以了解目前所有資料的概況
+              可以了解當前資料庫內所有資料的持續狀態與更新情形。
               </p>
+              <br>
+              <br>
+              <p>
+              資料範例：
+              </p>
+              <div class="well">
+                [
+                  {
+                    "type":"警察廣播電台_災變",
+                    "status":"持續中",
+                    "cnt":"97",
+                    "update_dt":"2015-01-10 04:30:04"
+                  },
+                  {
+                    "type":"警察廣播電台_災變",
+                    "status":"結束",
+                    "cnt":"4",
+                    "update_dt":"2015-01-04 01:08:05"
+                  },
+                  {
+                    "type":"警察廣播電台_事故",
+                    "status":"持續中",
+                    "cnt":"6291",
+                    "update_dt":"2015-01-10 14:15:08"
+                  },
+                  {
+                    "type":"警察廣播電台_事故",
+                    "status":"結束",
+                    "cnt":"329",
+                    "update_dt":"2015-01-09 19:30:04"
+                  },
+                  {
+                    "type":"中央氣象局_地震",
+                    "status":"持續中",
+                    "cnt":"27",
+                    "update_dt":"2015-01-10 07:45:07"
+                  },
+                  {
+                    "type":"中央氣象局_雨量",
+                    "status":"觀察中",
+                    "cnt":"552893",
+                    "update_dt":"2015-01-10 17:00:36"
+                  },
+                ]
+              </div>
             </div>
-        </div>
+            </div>
 
-        <div class="panel panel-default">
-            <div class="panel-heading"><h3 class="panel-title">取得所有事件</h3></div>
+            <div class="panel panel-default">
+            <div class="panel-heading"><h3 class="panel-title">取得當前發生事件</h3></div>
             <div class="panel-body">
               <div class="well">
                 <a href='http://104.46.234.139/GA/api/getEvent.php?beta=T'>http://104.46.234.139/GA/api/getEvent.php?beta=T</a>
               </div>
               <p>
-              可以得到目前所有的事件
+              可以取得當前發生所有事件的詳細情況與內容。
               </p>
+              <br>
+              <br>
+              <p>
+              資料範例：
+              </p>
+              <div class="well">
+                [
+                  {
+                    "status":"觀察中",
+                    "title":"臺中市和平區-烏石坑-C1F9H",
+                    "description":"{"d": "-", "10m": "-", "6h": "-", "no": "C1F9H", "24h": "-", "2d": "-", "12h": "-", "3h": "-", "1d": "-", "1h": "-"}",
+                    "update_dt":"2015-01-10 17:20:00",
+                    "start_dt":"2015-01-01 00:00:00"
+                  },
+                  {
+                    "status":"觀察中",
+                    "title":"花蓮縣壽豐鄉-鯉魚潭-C0T87",
+                    "description":"{"d": "-", "10m": "-", "6h": "-", "no": "C0T87", "24h": "-", "2d": "1.5", "12h": "-", "3h": "-", "1d": "-", "1h": "-"}",
+                    "update_dt":"2015-01-10 17:20:00",
+                    "start_dt":"2015-01-01 00:00:00"
+                  },
+                  {
+                    "status":"持續中",
+                    "title":" 中部 [福爾摩沙高速公路] 南下 106Km",
+                    "description":"過茄苳.中.散落物",
+                    "update_dt":"2015-01-10 15:10:09",
+                    "start_dt":"1970-01-01 00:00:00"
+                  },
+                  {
+                    "status":"持續中",
+                    "title":" 南部 [中山高速公路] 南下 206.9Km",
+                    "description":"埔鹽系統前.連結車故障。",
+                    "update_dt":"2015-01-10 14:45:04",
+                    "start_dt":"1970-01-01 00:00:00"
+                  },
+                  {
+                    "status":"持續中",
+                    "title":" 東部 [(台北楓港)] 南下 107.3Km",
+                    "description":"E車隊. 過蘇澳入口.超過130輛自行車活動.",
+                    "update_dt":"2015-01-10 14:35:08",
+                    "start_dt":"1970-01-01 00:00:00"
+                  },
+                ]
+              </div>
             </div>
-        </div>
+            </div>
+          </div>
       </div>
       <!-- API 說明文件示範區 結束-->
       <!-- SAW TEAM -->
