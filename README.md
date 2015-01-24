@@ -2,8 +2,9 @@ GodzillaAlert
 =============
 
 ## 第二階段
-網站: [http://saw-ga-2.cloudapp.net/GA/](http://saw-ga-2.cloudapp.net/GA/)
-API文件: [http://saw-ga-2.cloudapp.net/GA/api_doc.html](http://saw-ga-2.cloudapp.net/GA/api_doc.html)
+
+- 網站: [http://saw-ga-2.cloudapp.net/GA/](http://saw-ga-2.cloudapp.net/GA/)
+- API文件: [http://saw-ga-2.cloudapp.net/GA/api_doc.html](http://saw-ga-2.cloudapp.net/GA/api_doc.html)
 
 
 
