@@ -12,6 +12,17 @@
     <title>Godzilla Alert</title>
   </head>
   <body>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PNM7LK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PNM7LK');</script>
+<!-- End Google Tag Manager -->
+
+
    <!-- nav -->
   <nav class="navbar navbar-default fix col-md-12">
     <div class="container-fluid">
@@ -23,8 +34,15 @@
         <ul class="nav navbar-nav">
           <li ><a href="./project_desc.html">專案介紹</a></li>
           <li ><a href="./api_doc.html">API文件</a></li>
+
+
         </ul>
+        <form class="navbar-form navbar-left" role="search">
+          <a class="btn btn-default" href="https://github.com/ntuaha/GodzillaAlert" role="button">Github</a>
+        </form>
+
       </div>
+
     </div><!-- /.navbar-collapse -->
   </nav>
   <!-- End of nav -->
@@ -325,13 +343,13 @@
               <div class="panel-body">
                 <p>可以取得當前資料庫內限定數量（最重要 N 個）事件的持續狀態與更新情形。</p>
                 <div class="well">
-                  GET | <a href='http://104.46.234.139/GA/api/getImpEvent.php?beta=T&limit=2'>http://104.46.234.139/GA/api/getImpEvent.php?beta=T&limit=2</a>
+                  <h3 class="label label-primary">GET</h3> | <a href='http://104.46.234.139/GA/api/getImpEvent.php?beta=T&limit=2'>http://104.46.234.139/GA/api/getImpEvent.php?beta=T&limit=2</a>
                 </div>
                 <br>
                 <p>參數：</p>
                 <div class="well">
-                  GET beta=T 開發中版本
-                  GET limit=[N] 限定事件數量
+                  <div><span class="label label-primary">GET</span> beta=T 開發中版本</div>
+                  <div><span class="label label-primary">GET</span> limit=[N] 限定事件數量</div>
                 </div>
                 <br>
                 <p>資料內容：</p>
@@ -481,6 +499,8 @@
       </div>
       <!-- SAW TEAM 結束-->
     </div>
+
+
 
   </body>
 </html>
