@@ -64,7 +64,7 @@ class GET_PTS(EVENT_STATUS):
       sql_string.append(['address',"'%s'"%data['address']])
     sql_string.append(['description',"'%s'"%data['description']])
     sql_string.append(['provider',"'%s'"%data['provider']])
-    sql_string.append(['source',"'%s'"%self.SOURCE])
+    sql_string.append(['source',"'%s'"%data['source']])
     if 'DATA' in data:
       sql_string.append(['DATA',"'%s'"%data['DATA']])
     col = ",".join(map(str,[i[0] for i in sql_string]))

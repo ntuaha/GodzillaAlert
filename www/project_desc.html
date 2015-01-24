@@ -1,0 +1,166 @@
+<!doctype html>
+<html ng-app="GA">
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" type="image/gif" href="animated_favicon1.gif">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/GA.css">
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+    <script src="./js/GA_beta_2.js"></script>
+    <title>Godzilla Alert</title>
+  </head>
+  <body>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PNM7LK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PNM7LK');</script>
+<!-- End Google Tag Manager -->
+
+  <!-- nav -->
+  <nav class="navbar navbar-default fix col-md-12">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <a class="navbar-brand" href="./index.html">Godzilla Alert</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="./project_desc.html">專案介紹</a></li>
+          <li ><a href="./api_doc.html">API文件</a></li>
+        </ul>
+      </div>
+    </div><!-- /.navbar-collapse -->
+  </nav>
+  <!-- End of nav -->
+
+
+
+
+
+    <div class="container col-md-10 col-md-offset-1" >
+      <!-- Begin of Project Concept -->
+        <div class="row top">
+          <h1>專案緣起<hr/></h1>
+          <p class="description">
+台灣目前有許多的災防平台，不過往往只有在災害事故發生時才會得到人們關注---或是從未得到關注，加上民眾資訊取得來源分散，習慣從各新聞媒體及論壇等被動獲得訊息，政府也未有一個讓民眾能直接即時通報的平台，需透過各種管道層層送達負責單位。</p>
+<p class="description">我們認為這樣的狀況對於災防資訊的傳遞是非常不利的，畢竟“即時”瞭解並傳遞正確資訊才能讓民眾在最短時間內爭取逃難時間，讓政府能快速解決問題．因此我們希望讓這些資料透過加值的方式，使民眾更方便關注這些政府已預估發生災難的訊息，讓災防資訊在任何時間、地點，都能正確、即時、一致的傳達給每個人。為了達到上面的目標，我們針對幾個面向下手：</p>
+<p class="description">
+針對資料進行統合與運用，提供對使用者有意義的資訊與API讓大家分享：</p>
+<div class="well">
+  <ul class="description">
+  <li>彙整該事件之新聞，顯示分享或引用數</li>
+  <li>事件發生時顯示事件過去之歷史統計資訊
+  <ul>
+    <li>顯示過去相同路線及強度的颱風以及其造成之災害統計、類似強度的颱風是否停班停課</li>
+    <li>同地點過去是否發生類似事件等</li>
+    <li>其他</li>
+  </ul>
+  <li>災害應變建議</li>
+  <li>其他</li>
+  </ul>
+</div>
+
+<p class="description">建立使用者可以交流互動的平台，同時也開放每個災難討論空間的API：</p>
+<div class="well">
+  <ul class="description">
+  <li>事件的即時回報與更新</li>
+  <li>物資需求廣播等</li>
+  <li>結合銀行第三方支付功能，建立救災捐款與資金募集平台，確保專款專用</li>
+  <li>其他</li>
+  </ul>
+</div>
+
+<p class="description">分析災難資訊，除了傳統的災防數據之外，相關的新聞，群眾的討論都可以透過Text mining的技術找出中間值得留意的資訊，以供政府及群眾未來面對災難的經驗傳承與預防：</p>
+<div class="well">
+  <ul class="description">
+  <li>災害發生原因統計歸納</li>
+  <li>提供過去災害政府的作為與分析</li>
+  <li>其他</li>
+  </ul>
+</div>
+
+        </div>
+      <!-- End of Project Goal -->
+
+      <!-- Begin of Data Process -->
+        <div class="row">
+          <h1>我們怎麼處理資料的？<hr/></h1>
+<p class="description">
+雖然政府已經有開放出CAP共用災難格式，但許多可應用的資訊還是散落各地且格式不一致，因此我們這裡提出對於災難資料的整理方法、分類方式以及處理方式．透過這樣的流程使資料結構化，讓災防資訊的傳遞與串接能更快速完成。
+</p>
+
+          <!--  資料處理流程 -->
+          <div class="row">
+            <div class="col-sm-12 col-md-12">
+              <div class="thumbnail">
+                <div class="caption">
+                  <h3>資料處理流程</h3>
+                  <p class="description">本系統採取三層架構處理：</p>
+<ul class="description">
+<li><strong>資料擷取</strong>：以MongoDB針對不同來源及不同類型的資料進行初步的格式轉換，轉為便利使用的JSON格式．</li>
+<li><strong>資料分析</strong>：使用Python抽離出資料的核心洞察資訊後，放入PostgreSQL以利後續建立的複雜模型使用．</li>
+<li><strong>資料呈現</strong>：透過NodeJS將資料以API的形式傳遞給各類通路使用，如：Web, Mobile, Desktop AP及其他民眾可以加值應用的平台。</li>
+</ul>
+
+                </div>
+                <img src="http://media-cache-ec0.pinimg.com/originals/bc/e3/a6/bce3a61d413333913c41d433870c0c46.jpg" alt="資料處理流程">
+
+              </div>
+            </div>
+          </div>
+          <!--  End of 資料處理流程 -->
+          <!--  資料處理細項 -->
+          <div class="row">
+            <h1>資料分類流程<hr></h1>
+            <!-- 持續型資料 -->
+            <div class="col-sm-4 col-md-4">
+              <div class="thumbnail">
+                <div class="caption">
+                  <h3>持續型資料</h3>
+                  <p class="description">代表性資料：雨量、水位等。</p>
+                  <p class="description">特性：可以持續監控的資料，透過演算法找出未來可能不正常的時間點．如果一查覺未來可能發生問題就會提早發出警報，增加一般民眾的反應時間。</p>
+                </div>
+                <img src="http://media-cache-ak0.pinimg.com/originals/d8/5a/21/d85a21afe9c40b61b51dc04741fa83aa.jpg" alt="持續型資料">
+              </div>
+            </div>
+            <!-- End of 持續型資料 -->
+            <!-- 階段型資料 -->
+            <div class="col-sm-4 col-md-4">
+              <div class="thumbnail">
+                <div class="caption">
+                  <h3>階段型資料</h3>
+                  <p class="description">代表性資料：警廣即時路況、颱風等。</p>
+                  <p class="description">特性：災難在發生時會有資訊或警訊，且會持續一段時間才會被排除，因此需要在事發時能即時取得資訊更新正確資訊，讓民眾能夠到即時知道並即早準備。</p>
+                </div>
+                <img src="http://media-cache-ec0.pinimg.com/originals/99/95/3b/99953b64d9e33118032d9aaf8aff6660.jpg" alt="階段型資料">
+              </div>
+            </div>
+            <!-- End of 階段型資料 -->
+            <!-- 一次型資料 -->
+            <div class="col-sm-4 col-md-4">
+              <div class="thumbnail">
+                <div class="caption">
+                  <h3>一次型資料</h3>
+                  <p class="description">代表性資料：地震、海嘯等。</p>
+                  <p class="description">特性：災難發生期間很短暫，但威力可影響的時間，空間幅度廣大。這類型的資料除了災難的發生資訊之外，會著重在災後回報機制，讓更多人可以在事件發生後彼此有溝通平台，以確保民眾人身財產安全與縮短需要的救援時間。</p>
+                </div>
+                <img src="http://media-cache-ak0.pinimg.com/originals/fa/07/55/fa0755553ec5e916aa76eded39475692.jpg" alt="一次型資料">
+              </div>
+            </div>
+            <!-- End of 階段型資料 -->
+          </div>
+          <!--  End of 資料處理細項 -->
+
+        </div>
+      <!-- End of Data Process -->
+
+    </div>
+
+  </body>
+</html>

@@ -12,6 +12,17 @@
     <title>Godzilla Alert</title>
   </head>
   <body>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PNM7LK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PNM7LK');</script>
+<!-- End Google Tag Manager -->
+
+
    <!-- nav -->
   <nav class="navbar navbar-default fix col-md-12">
     <div class="container-fluid">
@@ -23,8 +34,15 @@
         <ul class="nav navbar-nav">
           <li ><a href="./project_desc.html">專案介紹</a></li>
           <li ><a href="./api_doc.html">API文件</a></li>
+
+
         </ul>
+        <form class="navbar-form navbar-left" role="search">
+          <a class="btn btn-default" href="https://github.com/ntuaha/GodzillaAlert" role="button">Github</a>
+        </form>
+
       </div>
+
     </div><!-- /.navbar-collapse -->
   </nav>
   <!-- End of nav -->
@@ -36,19 +54,33 @@
     <div class="container col-md-10 col-md-offset-1" >
       <!-- Begin of Introduction -->
       <div class="row top page-header">
+        <div class="col-lg-6">
         <h1> Godzilla Alert <small>你最需要的災難資訊!</small></h1>
-
+        </div>
+        <div class="col-lg-6">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...還在開發中...給使用者輸入地點" disabled>
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">Go!</button>
+            </span>
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
       </div>
       <div class="row" ng-controller="impCtrl">
-
+        <div class="alert alert-success" role="alert">目前最新資料時間: {{events[0].start_dt}}</div>
         <div class="col-sm-3 col-md-3 " ng-repeat="e in events">
+
           <div class="thumbnail event">
             <img src="http://media-cache-ec0.pinimg.com/originals/6a/97/aa/6a97aaca218e0606730e1fa1e0acd55e.jpg" alt="階段型資料">
             <div class="caption">
-              <h3>{{e.title}}</h3>
+              <h4>{{e.title}}</h4>
               <p>類型:{{e.type}}</p>
               <p>時間:{{e.update_dt}}</p>
-              <p>{{e.description}}</p>
+              <div class="well">{{e.description}}</div>
+            </div>
+            <div class="button-bottom">
+              <a href="#" class="btn btn-primary" role="button">Comment</a>
+              <a href="#" class="btn btn-default" role="button">See more</a>
             </div>
           </div>
         </div>
@@ -57,11 +89,12 @@
             <div class="caption">
               <img src="http://media-cache-ak0.pinimg.com/originals/af/1c/ba/af1cba1caf50dd8d34d692c3184e75ac.jpg" alt="沒事">
               <h3>太好了，沒事!</h3>
-              <p></p>
             </div>
           </div>
         </div>
+
       </div>
+
       <!-- End of Introduction -->
 
 
@@ -73,7 +106,7 @@
           <div class="col-sm-2 col-md-2 col-md-offset-1">
               <img src="./res/format.png" alt="一致" class=" personal-img">
               <div class="caption">
-                <h3>一致的資料格式與分類<hr/></h3>
+                <h3 class="text-center">一致資料格式<hr/></h3>
                 <p >
                 省下使用者到各地找尋災難訊息的時間，讓時間放在災難資訊加值服務上
                 </p>
@@ -85,7 +118,7 @@
           <div class="col-sm-2 col-md-2">
               <img src="./res/notice.png" alt="有感" class=" personal-img">
               <div class="caption">
-                <h3>有感的災難資料<hr/></h3>
+                <h3 class="text-center">有感災難資料<hr/></h3>
                 <p >
                 讓使用者能夠提供自己關心的地點與時間，可以更快速掌握災難的重點資訊．
                 </p>
@@ -94,9 +127,9 @@
           <!-- End of notice -->
           <!-- platform -->
           <div class="col-sm-2 col-md-2">
-              <img src="./res/talk.png" alt="平台" class="img-circle personal-img">
+              <img src="./res/talk.png" alt="平台" class="personal-img">
               <div class="caption">
-                <h3>資訊開放的公眾平台<hr/></h3>
+                <h3 class="text-center">開放資訊平台<hr/></h3>
                 <p >
                 讓資源提供者，資源需求者，資訊需求者，都能夠有一個共用的平台自由發布訊息與交流．
                 </p>
@@ -108,7 +141,7 @@
           <div class="col-sm-2 col-md-2">
               <img src="./res/statistics.png" alt="分析" class=" personal-img">
               <div class="caption">
-                <h3>災防資訊加值<hr/></h3>
+                <h3 class="text-center">加值災防資訊<hr/></h3>
                 <p >
                 讓使用者能更快速瞭解災難資訊，以及協同描述災難狀況與傳遞資訊
                 </p>
@@ -119,7 +152,7 @@
           <div class="col-sm-2 col-md-2">
               <img src="./res/money.png" alt="金流平台" class=" personal-img">
               <div class="caption">
-                <h3>災防金流物資平台<hr/></h3>
+                <h3>流通金流物資<hr/></h3>
                 <p >
                 讓每個人可以透過第三方支付等金流工具將金流投射到需要的地方上
                 </p>
@@ -336,13 +369,14 @@
               <div class="panel-body">
                 <p>可以取得當前資料庫內限定數量（最重要 N 個）事件的持續狀態與更新情形。</p>
                 <div class="well">
-                  GET | <a href='http://104.46.234.139/GA/api/getImpEvent.php?beta=T&limit=4'>http://104.46.234.139/GA/api/getImpEvent.php?beta=T&limit=4</a>
+                  <h3 class="label label-primary">GET</h3> | <a href='http://104.46.234.139/GA/api/getImpEvent.php?beta=T&limit=2'>http://104.46.234.139/GA/api/getImpEvent.php?beta=T&limit=2</a>
                 </div>
                 <br>
                 <p>參數：</p>
                 <div class="well">
-                  GET | beta=T 開發中版本<br>
-                  GET | limit=[N] 限定事件數量
+                  <div><span class="label label-primary">GET</span> beta=T 開發中版本</div>
+                  <div><span class="label label-primary">GET</span> limit=[N] 限定事件數量</div>
+
                 </div>
                 <br>
                 <p>資料內容：</p>
@@ -510,6 +544,8 @@
       </div>
       <!-- SAW TEAM 結束-->
     </div>
+
+
 
   </body>
 </html>
