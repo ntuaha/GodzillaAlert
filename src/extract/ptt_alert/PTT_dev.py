@@ -292,7 +292,7 @@ if __name__ =="__main__":
   DIASTER_TYPE = "地震"
   ptt = PTT('https://www.ptt.cc/bbs/Gossiping/index.html',DIASTER_TYPE)
   #ptt = PTT('https://www.ptt.cc/bbs/Gossiping/index7908.html',DIASTER_TYPE)
-  db = PTT_DB(os.path.dirname(__file__)+"/mongodb.inf","diaster","ptt_gossiping",DIASTER_TYPE)
+  #db = PTT_DB(os.path.dirname(__file__)+"/mongodb.inf","diaster","ptt_gossiping",DIASTER_TYPE)
   now = datetime.datetime.now()
   t = datetime.datetime(now.year,now.month,now.day,now.hour,now.minute,now.second) - datetime.timedelta(minutes=3)
   #t = datetime.datetime(2015,1,18,2,30,38)
@@ -306,4 +306,4 @@ if __name__ =="__main__":
 
 
   #Append News
-  print db.bulkInsertNews(posts)
+  #print db.bulkInsertNews(posts)
