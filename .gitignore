@@ -5,6 +5,8 @@ test.php
 #temporay data
 data.dat
 
+#weather data
+src/alert/*.json
 
 #ignore www folder
 www/*
