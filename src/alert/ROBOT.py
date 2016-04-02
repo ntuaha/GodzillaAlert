@@ -45,7 +45,7 @@ class ROBOT:
   def buildFBcommand(self,author,event):
     fb_description = []
     fb_description.append("-F '%s=%s'"%('access_token', self.getFBToken()))
-    fb_description.append("-F '%s=%s'"%('message', "%s 發表%s"%(author, event["message"])))
+    fb_description.append("-F '%s=%s'"%('message', "%s 發表 %s"%(author, event["message"])))
     fb_description.append("-F '%s=%s'"%('name', "[%s] %s"%(event['createdAT'].strftime("%Y-%m-%d %H:%M:%S"),event['title'])))
     fb_description.append("-F '%s=%s'"%('icon', 'http://media-cache-ec0.pinimg.com/originals/ad/50/b1/ad50b19f53a97e8d577c665040d426dd.jpg' ))
     fb_description.append("-F '%s=%s'"%('caption',"Godzilla Alert" ))
